@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>규식 ❤️ 시은 결혼식 초대장</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Helvetica Neue', sans-serif;
+      background: #f0f7fc;
+      color: #333;
+      line-height: 1.6;
+    }
+    header {
+      text-align: center;
+      padding: 2rem 1rem;
+    }
+    header h1 {
+      font-size: 2rem;
+      margin-bottom: 0.5rem;
+      color: #4682b4;
+    }
+    header p {
+      font-size: 1rem;
+      color: #555;
+    }
+    .intro {
+      text-align: center;
+      padding: 1rem;
+      font-size: 1.1rem;
+      background: #fff;
+      margin: 1rem auto;
+      max-width: 600px;
+      border-radius: 12px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    }
+    .photos {
+      display: flex;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      gap: 10px;
+      padding: 1rem;
+    }
+    .photos img {
+      max-height: 200px;
+      border-radius: 10px;
+      cursor: pointer;
+      scroll-snap-align: start;
+      transition: transform 0.3s ease;
+    }
+    .photos img:hover {
+      transform: scale(1.05);
+    }
+    .lightbox {
+      display: none;
+      position: fixed;
+      z-index: 999;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.8);
+      align-items: center;
+      justify-content: center;
+    }
+    .lightbox img {
+      max-width: 90%;
+      max-height: 80%;
+      border-radius: 10px;
+    }
+    .lightbox.active {
+      display: flex;
+    }
+    .map-section {
+      text-align: center;
+      padding: 1.5rem;
+      background: #fff;
+      margin: 1rem auto;
+      border-radius: 12px;
+      max-width: 600px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    }
+    .map-links {
+      margin-top: 10px;
+    }
+    .map-links a {
+      display: inline-block;
+      margin: 0 8px;
+      padding: 0.5rem 1rem;
+      background: #4682b4;
+      color: #fff;
+      text-decoration: none;
+      border-radius: 6px;
+      font-size: 0.9rem;
+    }
+    .accounts {
+      background: #fff;
+      padding: 1rem;
+      margin: 1rem auto;
+      max-width: 600px;
+      border-radius: 12px;
+      text-align: center;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    }
+    .account-box {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin: 0.5rem 0;
+      padding: 0.5rem;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      background: #f9f9f9;
+    }
+    .copy-btn {
+      padding: 0.3rem 0.7rem;
+      background: #4682b4;
+      color: #fff;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+    footer {
+      text-align: center;
+      padding: 1rem;
+      font-size: 0.9rem;
+      color: #777;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>규식 ❤️ 시은</h1>
+    <p>결혼식에 초대합니다</p>
+  </header>
+
+  <div class="intro">
+    시식커플을 위해 동생 하은이가 만든 가상 모바일 청첩장입니다 매옹-
+  </div>
+
+  <div class="photos">
+    <!-- 사진들 추가 (업로드한 20장 URL로 교체) -->
+    <img src="사진1.jpg" alt="photo1">
+    <img src="사진2.jpg" alt="photo2">
+    <img src="사진3.jpg" alt="photo3">
+    <img src="사진4.jpg" alt="photo4">
+    <img src="사진5.jpg" alt="photo5">
+    <img src="사진6.jpg" alt="photo6">
+    <img src="사진7.jpg" alt="photo7">
+    <img src="사진8.jpg" alt="photo8">
+    <img src="사진9.jpg" alt="photo9">
+    <img src="사진10.jpg" alt="photo10">
+  </div>
+
+  <div class="lightbox" id="lightbox">
+    <img src="" alt="lightbox">
+  </div>
+
+  <div class="map-section">
+    <h2>오시는 길</h2>
+    <p>힐스앤유로파</p>
+    <iframe src="https://map.naver.com/v5/" width="100%" height="250" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+    <div class="map-links">
+      <a href="https://map.naver.com/v5/search/힐스앤유로파" target="_blank">네이버 지도</a>
+      <a href="https://map.kakao.com/link/search/힐스앤유로파" target="_blank">카카오 지도</a>
+    </div>
+  </div>
+
+  <div class="accounts">
+    <h2>마음 전하실 곳</h2>
+    <div class="account-box">
+      <span>신랑 계좌: 123-456-789</span>
+      <button class="copy-btn" onclick="copyAccount('123-456-789')">복사</button>
+    </div>
+    <div class="account-box">
+      <span>신부 계좌: 987-654-321</span>
+      <button class="copy-btn" onclick="copyAccount('987-654-321')">복사</button>
+    </div>
+  </div>
+
+  <footer>
+    © 2025 규식 ❤️ 시은 Wedding Invitation
+  </footer>
+
+  <script>
+    // Lightbox
+    const lightbox = document.getElementById('lightbox');
+    const images = document.querySelectorAll('.photos img');
+    images.forEach(img => {
+      img.addEventListener('click', () => {
+        lightbox.classList.add('active');
+        lightbox.querySelector('img').src = img.src;
+      });
+    });
+    lightbox.addEventListener('click', () => {
+      lightbox.classList.remove('active');
+    });
+
+    // Copy account number
+    function copyAccount(number) {
+      navigator.clipboard.writeText(number).then(() => {
+        alert('계좌번호가 복사되었습니다: ' + number);
+      });
+    }
+  </script>
+</body>
+</html>
